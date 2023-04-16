@@ -1,3 +1,13 @@
+import { Wrapper } from '../../components/Wrapper'
+import { OrderForm } from './components/OrderForm'
+import { CartContainer } from './styles'
+
 export function Cart() {
-  return <h1>Carrinho</h1>
+  return (
+    <Wrapper>
+      <CartContainer>
+        <OrderForm />
+      </CartContainer>
+    </Wrapper>
+  )
 }
