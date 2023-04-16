@@ -10,22 +10,36 @@ import {
   SelectorWrapper,
   ShopButton,
   Tag,
+  TagsWrapper,
 } from './styles'
-import coffeeImg from '../../../../../assets/coffee.png'
 import { Minus, Plus, ShoppingCart } from '@phosphor-icons/react'
+import { Coffee } from '../data/coffees'
 
-export function CoffeeItem() {
+interface Props {
+  coffee: Coffee
+}
+
+export function CoffeeItem({ coffee }: Props) {
+  const formattedPrice = coffee.price
+    .toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
+    })
+    .replace('R$', '')
+
   return (
     <CoffeeItemContainer>
-      <img src={coffeeImg} alt="" />
-      <Tag>Tradicional</Tag>
-      <CoffeeName>Expresso Tradicional</CoffeeName>
-      <CoffeeDescription>
-        O tradicional café feito com água quente e grãos moídos
-      </CoffeeDescription>
+      <img src={coffee.imageSource} alt="" />
+      <TagsWrapper>
+        {coffee.tags.map((tag) => (
+          <Tag key={tag}>{tag}</Tag>
+        ))}
+      </TagsWrapper>
+      <CoffeeName>{coffee.name}</CoffeeName>
+      <CoffeeDescription>{coffee.description}</CoffeeDescription>
       <Footer>
         <Price>
-          R$ <strong>3,50</strong>
+          R$<strong>{formattedPrice}</strong>
         </Price>
         <SelectorWrapper>
           <Selector>

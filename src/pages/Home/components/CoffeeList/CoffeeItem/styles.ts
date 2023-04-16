@@ -24,6 +24,13 @@ export const CoffeeItemContainer = styled.li`
   border-bottom-right-radius: 6px;
 `
 
+export const TagsWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+`
+
 export const Tag = styled.span`
   background-color: ${({ theme }) => theme.colors['yellow-light']};
   color: ${({ theme }) => theme.colors['yellow-dark']};
@@ -55,6 +62,7 @@ export const Footer = styled.footer`
   margin-top: 2.0625rem;
 
   display: flex;
+  align-items: center;
   justify-content: space-between;
   max-width: 208px;
   width: 100%;
