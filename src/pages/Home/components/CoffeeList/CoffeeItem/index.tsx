@@ -51,7 +51,7 @@ export function CoffeeItem({ coffee }: Props) {
               <Plus size={14} />
             </DecrementButton>
           </Selector>
-          <ShopButton type="button">
+          <ShopButton to="/carrinho" type="button">
             <ShoppingCart weight="fill" />
           </ShopButton>
         </SelectorWrapper>

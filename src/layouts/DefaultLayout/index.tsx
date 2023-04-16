@@ -1,19 +1,15 @@
-import { ReactNode } from 'react'
 import { Header } from '../../components/Header'
 import { DefaultLayoutContainer } from './styles'
 import { Wrapper } from '../../components/Wrapper'
+import { Outlet } from 'react-router-dom'
 
-interface DefaultLayoutProps {
-  children: ReactNode
-}
-
-export function DefaultLayout({ children }: DefaultLayoutProps) {
+export function DefaultLayout() {
   return (
     <DefaultLayoutContainer>
       <Wrapper>
         <Header />
       </Wrapper>
-      {children}
+      <Outlet />
     </DefaultLayoutContainer>
   )
 }

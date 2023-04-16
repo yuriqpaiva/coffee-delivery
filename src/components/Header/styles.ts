@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const HeaderContainer = styled.header`
@@ -33,7 +34,7 @@ export const Location = styled.div`
   }
 `
 
-export const CartAnchor = styled.a`
+export const CartAnchor = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;

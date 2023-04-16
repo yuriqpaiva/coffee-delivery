@@ -10,7 +10,7 @@ import {
 export function Header() {
   return (
     <HeaderContainer>
-      <LogoAnchor href="">
+      <LogoAnchor href="/">
         <img src="/coffee-delivery.svg" alt="" />
       </LogoAnchor>
       <Navigation>
@@ -18,7 +18,7 @@ export function Header() {
           <MapPin size={22} weight="fill" />
           Brasília, DF
         </Location>
-        <CartAnchor href="#" title="Carrinho">
+        <CartAnchor to="/carrinho" title="Carrinho">
           <ShoppingCart size={22} weight="fill" />
         </CartAnchor>
       </Navigation>

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const CoffeeItemContainer = styled.li`
@@ -126,11 +127,15 @@ export const SelectorWrapper = styled.div`
   gap: 0.5rem;
 `
 
-export const ShopButton = styled.button`
+export const ShopButton = styled(Link)`
   background-color: ${({ theme }) => theme.colors['purple-dark']};
 
-  line-height: 0;
   border: none;
+  line-height: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   padding: 0.5rem;
   border-radius: 6px;
 
