@@ -2,18 +2,16 @@ import {
   CoffeeDescription,
   CoffeeItemContainer,
   CoffeeName,
-  DecrementButton,
   Footer,
-  IncrementButton,
   Price,
-  Selector,
   SelectorWrapper,
   ShopButton,
   Tag,
   TagsWrapper,
 } from './styles'
-import { Minus, Plus, ShoppingCart } from '@phosphor-icons/react'
+import { ShoppingCart } from '@phosphor-icons/react'
 import { Coffee } from '../data/coffees'
+import { NumberSelector } from '../../../../../components/NumberSelector'
 
 interface Props {
   coffee: Coffee
@@ -42,15 +40,7 @@ export function CoffeeItem({ coffee }: Props) {
           R$<strong>{formattedPrice}</strong>
         </Price>
         <SelectorWrapper>
-          <Selector>
-            <IncrementButton type="button">
-              <Minus size={14} />
-            </IncrementButton>
-            <span>1</span>
-            <DecrementButton type="button">
-              <Plus size={14} />
-            </DecrementButton>
-          </Selector>
+          <NumberSelector />
           <ShopButton to="/carrinho" type="button">
             <ShoppingCart weight="fill" />
           </ShopButton>
