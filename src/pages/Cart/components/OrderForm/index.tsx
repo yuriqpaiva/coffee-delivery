@@ -1,4 +1,4 @@
-import { MapPinLine } from '@phosphor-icons/react'
+import { CurrencyDollar, MapPinLine } from '@phosphor-icons/react'
 import {
   AddressFieldsWrapper,
   AddressInformationContainer,
@@ -6,9 +6,12 @@ import {
   AddressInformationHeaderText,
   OrderFormContainer,
   PaymentInformationContainer,
+  PaymentInformationHeader,
+  PaymentInformationHeaderText,
   Title,
 } from './styles'
 import { Input } from '../../../../components/Input'
+import { PaymentSelector } from './PaymentSelector'
 
 export function OrderForm() {
   return (
@@ -32,7 +35,16 @@ export function OrderForm() {
           <Input placeholder="UF" className="state" />
         </AddressFieldsWrapper>
       </AddressInformationContainer>
-      <PaymentInformationContainer></PaymentInformationContainer>
+      <PaymentInformationContainer>
+        <PaymentInformationHeader>
+          <CurrencyDollar size={22} />
+          <PaymentInformationHeaderText>
+            <h3>Endereço de Entrega</h3>
+            <p>Informe o endereço onde deseja receber seu pedido</p>
+          </PaymentInformationHeaderText>
+        </PaymentInformationHeader>
+        <PaymentSelector />
+      </PaymentInformationContainer>
     </OrderFormContainer>
   )
 }

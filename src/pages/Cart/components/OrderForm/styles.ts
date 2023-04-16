@@ -110,3 +110,31 @@ export const PaymentInformationContainer = styled.div`
 
   border-radius: 6px;
 `
+
+export const PaymentInformationHeader = styled.header`
+  display: flex;
+  gap: 0.5rem;
+
+  & > svg {
+    color: ${({ theme }) => theme.colors.purple};
+  }
+`
+
+export const PaymentInformationHeaderText = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  & > h3 {
+    color: ${({ theme }) => theme.colors['base-subtitle']};
+    font-size: 1rem;
+    line-height: 1.3;
+    font-weight: 400;
+  }
+
+  & > p {
+    color: ${({ theme }) => theme.colors['base-text']};
+    font-size: 0.875rem;
+    line-height: 1.3;
+    font-weight: 400;
+  }
+`
