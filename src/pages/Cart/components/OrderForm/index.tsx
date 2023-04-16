@@ -12,8 +12,19 @@ import {
 } from './styles'
 import { Input } from '../../../../components/Input'
 import { PaymentSelector } from './PaymentSelector'
+import { useState } from 'react'
 
 export function OrderForm() {
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<
+    'credit' | 'debit' | 'money' | null
+  >(null)
+
+  function handlePaymentMethodSelection(
+    paymentMethod: 'credit' | 'debit' | 'money',
+  ) {
+    setSelectedPaymentMethod(paymentMethod)
+  }
+
   return (
     <OrderFormContainer>
       <Title>Complete seu pedido</Title>
@@ -26,13 +37,13 @@ export function OrderForm() {
           </AddressInformationHeaderText>
         </AddressInformationHeader>
         <AddressFieldsWrapper>
-          <Input placeholder="CEP" className="cep" />
-          <Input placeholder="Rua" className="street" />
-          <Input placeholder="Número" className="number" />
-          <Input placeholder="Complemento" className="complement" />
-          <Input placeholder="Bairro" className="neighborhood" />
-          <Input placeholder="Cidade" className="city" />
-          <Input placeholder="UF" className="state" />
+          <Input label="CEP" className="cep" />
+          <Input label="Rua" className="street" />
+          <Input label="Número" className="number" />
+          <Input label="Complemento" className="complement" />
+          <Input label="Bairro" className="neighborhood" />
+          <Input label="Cidade" className="city" />
+          <Input label="UF" className="state" />
         </AddressFieldsWrapper>
       </AddressInformationContainer>
       <PaymentInformationContainer>
@@ -43,7 +54,10 @@ export function OrderForm() {
             <p>Informe o endereço onde deseja receber seu pedido</p>
           </PaymentInformationHeaderText>
         </PaymentInformationHeader>
-        <PaymentSelector />
+        <PaymentSelector
+          value={selectedPaymentMethod}
+          onChange={handlePaymentMethodSelection}
+        />
       </PaymentInformationContainer>
     </OrderFormContainer>
   )

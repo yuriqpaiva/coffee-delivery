@@ -28,6 +28,8 @@ export const SelectorButton = styled.button<SelectorButtonProps>`
   background-color: ${({ theme, isSelected }) =>
     isSelected ? theme.colors['purple-light'] : theme.colors['base-button']};
 
+  border: 1px solid transparent;
+
   ${({ isSelected, theme }) =>
     isSelected &&
     css`

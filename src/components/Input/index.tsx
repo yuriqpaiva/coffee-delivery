@@ -3,13 +3,20 @@ import { BaseInput, Container } from './styles'
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   className?: string
+  label: string
 }
 
 export const Input = forwardRef<HTMLInputElement, Props>(
-  ({ className, ...props }, ref) => {
+  ({ className, label, ...props }, ref) => {
     return (
-      <Container htmlFor="input" className={className}>
-        <BaseInput id="input" ref={ref} type="text" {...props} />
+      <Container htmlFor={label} className={className}>
+        <BaseInput
+          id={label}
+          ref={ref}
+          type="text"
+          placeholder={label}
+          {...props}
+        />
       </Container>
     )
   },

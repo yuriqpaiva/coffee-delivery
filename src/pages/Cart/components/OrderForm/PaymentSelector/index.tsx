@@ -15,21 +15,21 @@ export function PaymentSelector({ value, onChange }: Props) {
     <PaymentSelectorContainer>
       <SelectorButton
         isSelected={value === 'credit'}
-        onChange={() => handleChange('credit')}
+        onClick={() => handleChange('credit')}
       >
         <CreditCard size={16} />
         <span>Cartão de crédito</span>
       </SelectorButton>
       <SelectorButton
         isSelected={value === 'debit'}
-        onChange={() => handleChange('debit')}
+        onClick={() => handleChange('debit')}
       >
         <Bank size={16} />
         <span>Cartão de débito</span>
       </SelectorButton>
       <SelectorButton
         isSelected={value === 'money'}
-        onChange={() => handleChange('debit')}
+        onClick={() => handleChange('money')}
       >
         <Money size={16} />
         <span>Cartão de dinheiro</span>
