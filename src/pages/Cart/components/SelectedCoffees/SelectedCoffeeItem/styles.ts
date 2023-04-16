@@ -60,6 +60,10 @@ export const RemoveButton = styled.button`
   svg {
     color: ${({ theme }) => theme.colors.purple};
   }
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors['base-hover']};
+  }
 `
 
 export const Price = styled.strong`

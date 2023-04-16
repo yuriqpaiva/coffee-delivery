@@ -30,6 +30,10 @@ const BaseOperationButton = styled.button`
   svg {
     color: ${({ theme }) => theme.colors.purple};
   }
+
+  &:hover svg {
+    color: ${({ theme }) => theme.colors['purple-dark']};
+  }
 `
 
 export const IncrementButton = styled(BaseOperationButton)`

@@ -46,4 +46,9 @@ export const SelectorButton = styled.button<SelectorButtonProps>`
     line-height: 1.3;
     font-weight: 400;
   }
+
+  &:hover {
+    background-color: ${({ theme, isSelected }) =>
+      !isSelected && theme.colors['base-hover']};
+  }
 `

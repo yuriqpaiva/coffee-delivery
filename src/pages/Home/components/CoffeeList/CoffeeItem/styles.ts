@@ -102,4 +102,8 @@ export const ShopButton = styled(Link)`
   svg {
     color: ${({ theme }) => theme.colors.white};
   }
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.purple};
+  }
 `
