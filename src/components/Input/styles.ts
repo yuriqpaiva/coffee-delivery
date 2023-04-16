@@ -9,9 +9,22 @@ export const Container = styled.label`
 
   border: 1px solid ${({ theme }) => theme.colors['base-button']};
 
+  display: flex;
+  justify-content: space-between;
+
   &:focus-within {
     box-shadow: 0 0 0 1px ${({ theme }) => theme.colors['yellow-dark']};
   }
+`
+
+export const OptionalText = styled.em`
+  font-family: 'Roboto';
+  padding-left: 0.5rem;
+
+  font-size: 0.75rem;
+  color: ${({ theme }) => theme.colors['base-label']};
+  line-height: 1.3;
+  font-weight: normal;
 `
 
 export const BaseInput = styled.input`

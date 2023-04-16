@@ -40,7 +40,7 @@ export function OrderForm() {
           <Input label="CEP" className="cep" />
           <Input label="Rua" className="street" />
           <Input label="Número" className="number" />
-          <Input label="Complemento" className="complement" />
+          <Input label="Complemento" className="complement" isOptional />
           <Input label="Bairro" className="neighborhood" />
           <Input label="Cidade" className="city" />
           <Input label="UF" className="state" />
