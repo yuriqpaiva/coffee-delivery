@@ -35,6 +35,8 @@ export const Location = styled.div`
 `
 
 export const CartAnchor = styled(Link)`
+  position: relative;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,4 +49,23 @@ export const CartAnchor = styled(Link)`
   svg {
     color: ${({ theme }) => theme.colors['yellow-dark']};
   }
+`
+
+export const CartCounter = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 20px;
+  width: 20px;
+  border-radius: 9999px;
+
+  top: -8px;
+  right: -8px;
+
+  position: absolute;
+  background-color: ${({ theme }) => theme.colors['yellow-dark']};
+  color: ${({ theme }) => theme.colors.white};
+  font-size: 0.75rem;
+  font-weight: bold;
 `

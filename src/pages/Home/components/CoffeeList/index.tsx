@@ -1,5 +1,5 @@
+import { coffees } from '../../../../constants/coffees'
 import { CoffeeItem } from './CoffeeItem'
-import { coffees } from './data/coffees'
 import { CoffeeListContainer, CoffeeListWrapper } from './styles'
 
 export function CoffeeList() {

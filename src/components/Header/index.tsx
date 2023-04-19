@@ -5,9 +5,13 @@ import {
   Location,
   LogoAnchor,
   Navigation,
+  CartCounter,
 } from './styles'
+import { useCoffees } from '../../contexts/CoffeesContext'
 
 export function Header() {
+  const { numberOfSelectedCoffeesType } = useCoffees()
+
   return (
     <HeaderContainer>
       <LogoAnchor href="/">
@@ -20,6 +24,7 @@ export function Header() {
         </Location>
         <CartAnchor to="/carrinho" title="Carrinho">
           <ShoppingCart size={22} weight="fill" />
+          <CartCounter>{numberOfSelectedCoffeesType}</CartCounter>
         </CartAnchor>
       </Navigation>
     </HeaderContainer>
