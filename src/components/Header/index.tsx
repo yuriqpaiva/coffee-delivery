@@ -14,7 +14,7 @@ export function Header() {
 
   return (
     <HeaderContainer>
-      <LogoAnchor href="/">
+      <LogoAnchor to="/">
         <img src="/coffee-delivery.svg" alt="" />
       </LogoAnchor>
       <Navigation>

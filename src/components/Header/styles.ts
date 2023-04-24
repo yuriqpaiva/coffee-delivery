@@ -7,7 +7,7 @@ export const HeaderContainer = styled.header`
   align-items: center;
 `
 
-export const LogoAnchor = styled.a`
+export const LogoAnchor = styled(Link)`
   display: flex;
 `
 
