@@ -37,7 +37,7 @@ export function SelectedCoffeeItem({ selectedCoffee }: Props) {
       <InfoWrapper>
         <img src={selectedCoffee?.imageSource || traditionalCoffeeImg} alt="" />
         <MainContentWrapper>
-          <span>Expresso Tradicional</span>
+          <span>{selectedCoffee.name}</span>
           <ControlsWrapper>
             <NumberSelector counter={counter} onChange={handleQuantityChange} />
             <RemoveButton
