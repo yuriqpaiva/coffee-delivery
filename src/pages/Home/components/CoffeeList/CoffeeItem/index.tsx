@@ -12,16 +12,13 @@ import {
 import { ShoppingCart } from '@phosphor-icons/react'
 import { NumberSelector } from '../../../../../components/NumberSelector'
 import { Coffee } from 'src/constants/coffees'
-import { useState } from 'react'
-import { useCoffees } from '../../../../../contexts/CoffeesContext'
+import { useCoffeeCounter } from '../../../../../hooks/useCoffeeCounter'
 
 interface Props {
   coffee: Coffee
 }
 
 export function CoffeeItem({ coffee }: Props) {
-  const { updateSelectedCoffeeQuantity: handleNewCoffee } = useCoffees()
-
   const formattedPrice = coffee.price
     .toLocaleString('pt-BR', {
       style: 'currency',
@@ -29,16 +26,13 @@ export function CoffeeItem({ coffee }: Props) {
     })
     .replace('R$', '')
 
-  const [quantity, setQuantity] = useState(0)
-
-  function handleQuantityChange(type: 'increment' | 'decrement') {
-    handleNewCoffee(coffee, type)
-    if (type === 'increment') {
-      setQuantity((state) => state + 1)
-    } else if (type === 'decrement' && quantity > 0) {
-      setQuantity((state) => state - 1)
-    }
-  }
+  const { counter, handleQuantityChange } = useCoffeeCounter({
+    countStartValue: 0,
+    selectedCoffee: coffee,
+    options: {
+      allowZero: true,
+    },
+  })
 
   return (
     <CoffeeItemContainer>
@@ -55,7 +49,7 @@ export function CoffeeItem({ coffee }: Props) {
           R$<strong>{formattedPrice}</strong>
         </Price>
         <SelectorWrapper>
-          <NumberSelector counter={quantity} onChange={handleQuantityChange} />
+          <NumberSelector counter={counter} onChange={handleQuantityChange} />
           <ShopButton to="/carrinho" type="button">
             <ShoppingCart weight="fill" />
           </ShopButton>

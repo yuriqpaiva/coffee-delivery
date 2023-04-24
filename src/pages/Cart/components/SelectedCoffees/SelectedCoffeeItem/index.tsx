@@ -7,26 +7,49 @@ import {
   RemoveButton,
   SelectedCoffeeItemContainer,
 } from './styles'
-import traditionalCoffeeImg from '@/assets/coffees/traditional.png'
 import { Trash } from '@phosphor-icons/react'
+import traditionalCoffeeImg from '@/assets/coffees/traditional.png'
+import {
+  SelectedCoffee,
+  useCoffees,
+} from '../../../../../contexts/CoffeesContext'
+import { useCoffeeCounter } from '../../../../../hooks/useCoffeeCounter'
 
-export function SelectedCoffeeItem() {
+interface Props {
+  selectedCoffee: SelectedCoffee
+}
+
+export function SelectedCoffeeItem({ selectedCoffee }: Props) {
+  const formattedPrice = selectedCoffee.price.toLocaleString('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+  })
+
+  const { removeCoffeeFromCart } = useCoffees()
+
+  const { counter, handleQuantityChange } = useCoffeeCounter({
+    countStartValue: selectedCoffee.quantity,
+    selectedCoffee,
+  })
+
   return (
     <SelectedCoffeeItemContainer>
       <InfoWrapper>
-        <img src={traditionalCoffeeImg} alt="" />
+        <img src={selectedCoffee?.imageSource || traditionalCoffeeImg} alt="" />
         <MainContentWrapper>
           <span>Expresso Tradicional</span>
           <ControlsWrapper>
-            <NumberSelector />
-            <RemoveButton>
+            <NumberSelector counter={counter} onChange={handleQuantityChange} />
+            <RemoveButton
+              onClick={() => removeCoffeeFromCart(selectedCoffee.id)}
+            >
               <Trash />
               Remover
             </RemoveButton>
           </ControlsWrapper>
         </MainContentWrapper>
       </InfoWrapper>
-      <Price>R$ 3,50</Price>
+      <Price>{formattedPrice}</Price>
     </SelectedCoffeeItemContainer>
   )
 }

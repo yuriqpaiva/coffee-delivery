@@ -1,7 +1,8 @@
 import { ReactNode, createContext, useContext, useState } from 'react'
+import { COFFEE_DELIVERY_TAX } from '../constants'
 import { Coffee } from 'src/constants/coffees'
 
-interface SelectedCoffee {
+export interface SelectedCoffee {
   id: number
   name: string
   description: string
@@ -18,6 +19,9 @@ interface CoffeesContextData {
     action: 'increment' | 'decrement',
   ) => void
   numberOfSelectedCoffeesType: number
+  removeCoffeeFromCart: (coffeeId: number) => void
+  totalCostWithoutDeliveryTax: number
+  totalCostWithDeliveryTax: number
 }
 
 const CoffeesContext = createContext<CoffeesContextData>(
@@ -67,12 +71,30 @@ export function CoffeesProvider({ children }: Props) {
     }
   }
 
+  function removeCoffeeFromCart(coffeeId: number) {
+    setSelectedCoffees(
+      selectedCoffees.filter(
+        (selectedCoffee) => selectedCoffee.id !== coffeeId,
+      ),
+    )
+  }
+
+  const totalCostWithoutDeliveryTax = selectedCoffees.reduce((acc, coffee) => {
+    return acc + coffee.price * coffee.quantity
+  }, 0)
+
+  const totalCostWithDeliveryTax =
+    totalCostWithoutDeliveryTax + COFFEE_DELIVERY_TAX
+
   return (
     <CoffeesContext.Provider
       value={{
         selectedCoffees,
         updateSelectedCoffeeQuantity,
         numberOfSelectedCoffeesType,
+        removeCoffeeFromCart,
+        totalCostWithoutDeliveryTax,
+        totalCostWithDeliveryTax,
       }}
     >
       {children}
