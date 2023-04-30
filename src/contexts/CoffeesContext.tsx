@@ -1,4 +1,10 @@
-import { ReactNode, createContext, useContext, useState } from 'react'
+import {
+  ReactNode,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from 'react'
 import { COFFEE_DELIVERY_TAX } from '../constants'
 import { Coffee } from 'src/constants/coffees'
 
@@ -32,9 +38,32 @@ interface Props {
   children: ReactNode
 }
 
+function getInitialSelectedCoffees() {
+  const selectedCoffeesState = localStorage.getItem(
+    '@coffee-delivery:selected-coffees-state-1.0.0',
+  )
+
+  if (selectedCoffeesState) {
+    return JSON.parse(selectedCoffeesState)
+  }
+
+  return []
+}
+
 export function CoffeesProvider({ children }: Props) {
-  const [selectedCoffees, setSelectedCoffees] = useState<SelectedCoffee[]>([])
+  const [selectedCoffees, setSelectedCoffees] = useState<SelectedCoffee[]>(
+    getInitialSelectedCoffees(),
+  )
   const numberOfSelectedCoffeesType = selectedCoffees.length
+
+  useEffect(() => {
+    const stateJSON = JSON.stringify(selectedCoffees)
+
+    localStorage.setItem(
+      '@coffee-delivery:selected-coffees-state-1.0.0',
+      stateJSON,
+    )
+  }, [selectedCoffees])
 
   function updateSelectedCoffeeQuantity(
     coffee: Coffee,
