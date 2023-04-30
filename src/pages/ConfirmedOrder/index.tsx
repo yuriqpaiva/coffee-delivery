@@ -15,10 +15,14 @@ import { CurrencyDollar, MapPin, Timer } from '@phosphor-icons/react'
 import confirmedOrderImg from '@/assets/confirmed-order.png'
 import { useOrder } from '../../contexts/OrderContext'
 
+const paymentMethods = {
+  credit: 'Cartão de crédito',
+  debit: 'Cartão de débito',
+  cash: 'Dinheiro',
+}
+
 export function ConfirmedOrder() {
   const { order } = useOrder()
-
-  console.log(order)
 
   return (
     <Wrapper>
@@ -36,8 +40,12 @@ export function ConfirmedOrder() {
                 <MapPin size={16} weight="fill" />
               </OrderIconWrapper>
               <OrderInfoText>
-                Entrega em <strong>Rua João Daniel Martinelli, 102</strong>{' '}
-                Farrapos - Porto Alegre, RS
+                Entrega em{' '}
+                <strong>
+                  {order?.street}, {order?.number}
+                </strong>{' '}
+                <br />
+                {order?.neighborhood} - {order?.city}, {order?.state}
               </OrderInfoText>
             </OrderInfoItem>
 
@@ -57,7 +65,9 @@ export function ConfirmedOrder() {
               </OrderIconWrapper>
               <OrderInfoText breakLineOnStrong>
                 Pagamento na entrega
-                <strong>Cartão de Crédito</strong>
+                <strong>
+                  {paymentMethods[order?.paymentMethod || 'credit']}
+                </strong>
               </OrderInfoText>
             </OrderInfoItem>
           </OrderInfoContainer>
