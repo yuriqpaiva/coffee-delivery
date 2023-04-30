@@ -30,11 +30,12 @@ export function useCoffeeCounter({
   }
 
   function handleQuantityChange(type: 'increment' | 'decrement') {
-    updateSelectedCoffeeQuantity(selectedCoffee, type)
     if (type === 'increment') {
       setCounter((state) => state + 1)
+      updateSelectedCoffeeQuantity(selectedCoffee, type)
     } else if (type === 'decrement' && validateCounterDecrement()) {
       setCounter((state) => state - 1)
+      updateSelectedCoffeeQuantity(selectedCoffee, type)
     }
   }
 
