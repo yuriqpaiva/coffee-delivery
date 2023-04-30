@@ -12,17 +12,23 @@ import {
 } from './styles'
 import { Input } from '../../../../components/Input'
 import { PaymentSelector } from './PaymentSelector'
-import { useState } from 'react'
+import { useFormContext } from 'react-hook-form'
+import { OrderFormSchema } from '../..'
 
 export function OrderForm() {
-  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<
-    'credit' | 'debit' | 'money' | null
-  >(null)
+  const {
+    register,
+    setValue,
+    watch,
+    formState: { errors },
+  } = useFormContext<OrderFormSchema>()
+
+  const selectedPaymentMethod = watch('paymentMethod')
 
   function handlePaymentMethodSelection(
-    paymentMethod: 'credit' | 'debit' | 'money',
+    paymentMethod: 'credit' | 'debit' | 'cash',
   ) {
-    setSelectedPaymentMethod(paymentMethod)
+    setValue('paymentMethod', paymentMethod)
   }
 
   return (
@@ -37,13 +43,50 @@ export function OrderForm() {
           </AddressInformationHeaderText>
         </AddressInformationHeader>
         <AddressFieldsWrapper>
-          <Input label="CEP" className="cep" />
-          <Input label="Rua" className="street" />
-          <Input label="Número" className="number" />
-          <Input label="Complemento" className="complement" isOptional />
-          <Input label="Bairro" className="neighborhood" />
-          <Input label="Cidade" className="city" />
-          <Input label="UF" className="state" />
+          <Input
+            label="CEP"
+            className="cep"
+            maxLength={8}
+            {...register('zipCode')}
+            errorMessage={errors.zipCode?.message}
+          />
+          <Input
+            label="Rua"
+            className="street"
+            {...register('street')}
+            errorMessage={errors.street?.message}
+          />
+          <Input
+            label="Número"
+            className="number"
+            {...register('number')}
+            errorMessage={errors.number?.message}
+          />
+          <Input
+            label="Complemento"
+            className="complement"
+            isOptional
+            {...register('complement')}
+            errorMessage={errors.complement?.message}
+          />
+          <Input
+            label="Bairro"
+            className="neighborhood"
+            {...register('neighborhood')}
+            errorMessage={errors.neighborhood?.message}
+          />
+          <Input
+            label="Cidade"
+            className="city"
+            {...register('city')}
+            errorMessage={errors.city?.message}
+          />
+          <Input
+            label="UF"
+            className="state"
+            {...register('state')}
+            errorMessage={errors.state?.message}
+          />
         </AddressFieldsWrapper>
       </AddressInformationContainer>
       <PaymentInformationContainer>

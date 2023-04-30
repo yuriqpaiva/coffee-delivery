@@ -20,5 +20,7 @@ export const defaultTheme = {
 
     background: '#FAFAFA',
     white: '#FFFFFF',
+
+    danger: '#AB222E',
   },
 }

@@ -1,24 +1,34 @@
 import { InputHTMLAttributes, forwardRef } from 'react'
-import { BaseInput, Container, OptionalText } from './styles'
+import {
+  BaseInput,
+  Container,
+  ErrorMessage,
+  InputWrapper,
+  OptionalText,
+} from './styles'
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   className?: string
   label: string
   isOptional?: boolean
+  errorMessage?: string
 }
 
 export const Input = forwardRef<HTMLInputElement, Props>(
-  ({ className, label, isOptional = false, ...props }, ref) => {
+  ({ className, label, errorMessage, isOptional = false, ...props }, ref) => {
     return (
-      <Container htmlFor={label} className={className}>
-        <BaseInput
-          id={label}
-          ref={ref}
-          type="text"
-          placeholder={label}
-          {...props}
-        />
-        {isOptional && <OptionalText>Opcional</OptionalText>}
+      <Container className={className}>
+        <InputWrapper htmlFor={label} error={!!errorMessage}>
+          <BaseInput
+            id={label}
+            ref={ref}
+            type="text"
+            placeholder={label}
+            {...props}
+          />
+          {isOptional && <OptionalText>Opcional</OptionalText>}
+        </InputWrapper>
+        {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
       </Container>
     )
   },

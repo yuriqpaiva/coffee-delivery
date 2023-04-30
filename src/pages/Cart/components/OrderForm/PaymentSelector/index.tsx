@@ -2,18 +2,19 @@ import { Bank, CreditCard, Money } from '@phosphor-icons/react'
 import { PaymentSelectorContainer, SelectorButton } from './styles'
 
 interface Props {
-  value?: 'credit' | 'debit' | 'money' | null
-  onChange?: (value: 'credit' | 'debit' | 'money') => void
+  value?: 'credit' | 'debit' | 'cash' | null
+  onChange?: (value: 'credit' | 'debit' | 'cash') => void
 }
 
 export function PaymentSelector({ value, onChange }: Props) {
-  function handleChange(value: 'credit' | 'debit' | 'money') {
+  function handleChange(value: 'credit' | 'debit' | 'cash') {
     onChange && onChange(value)
   }
 
   return (
     <PaymentSelectorContainer>
       <SelectorButton
+        type="button"
         isSelected={value === 'credit'}
         onClick={() => handleChange('credit')}
       >
@@ -21,6 +22,7 @@ export function PaymentSelector({ value, onChange }: Props) {
         <span>Cartão de crédito</span>
       </SelectorButton>
       <SelectorButton
+        type="button"
         isSelected={value === 'debit'}
         onClick={() => handleChange('debit')}
       >
@@ -28,11 +30,12 @@ export function PaymentSelector({ value, onChange }: Props) {
         <span>Cartão de débito</span>
       </SelectorButton>
       <SelectorButton
-        isSelected={value === 'money'}
-        onClick={() => handleChange('money')}
+        type="button"
+        isSelected={value === 'cash'}
+        onClick={() => handleChange('cash')}
       >
         <Money size={16} />
-        <span>Cartão de dinheiro</span>
+        <span>Dinheiro</span>
       </SelectorButton>
     </PaymentSelectorContainer>
   )

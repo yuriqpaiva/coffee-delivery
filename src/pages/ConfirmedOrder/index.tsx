@@ -13,8 +13,13 @@ import {
 import { CurrencyDollar, MapPin, Timer } from '@phosphor-icons/react'
 
 import confirmedOrderImg from '@/assets/confirmed-order.png'
+import { useOrder } from '../../contexts/OrderContext'
 
 export function ConfirmedOrder() {
+  const { order } = useOrder()
+
+  console.log(order)
+
   return (
     <Wrapper>
       <ConfirmedOrderContainer>

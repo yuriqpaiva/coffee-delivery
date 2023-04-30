@@ -1,6 +1,21 @@
 import styled from 'styled-components'
 
-export const Container = styled.label`
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+`
+
+export const ErrorMessage = styled.span`
+  color: ${({ theme }) => theme.colors.danger};
+  font-size: 0.75rem;
+`
+
+interface InputWrapperProps {
+  error?: boolean
+}
+
+export const InputWrapper = styled.label<InputWrapperProps>`
   border: none;
 
   padding: 0.75rem;
@@ -13,7 +28,10 @@ export const Container = styled.label`
   justify-content: space-between;
 
   &:focus-within {
-    box-shadow: 0 0 0 1px ${({ theme }) => theme.colors['yellow-dark']};
+    box-shadow: ${({ error, theme }) =>
+      error
+        ? `0 0 0 1px ${theme.colors.danger}`
+        : `0 0 0 1px ${theme.colors['yellow-dark']}`};
   }
 `
 

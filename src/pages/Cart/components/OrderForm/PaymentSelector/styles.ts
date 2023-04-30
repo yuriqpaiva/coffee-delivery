@@ -42,9 +42,10 @@ export const SelectorButton = styled.button<SelectorButtonProps>`
 
   & > span {
     color: ${({ theme }) => theme.colors['base-text']};
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     line-height: 1.3;
     font-weight: 400;
+    text-transform: uppercase;
   }
 
   &:hover {

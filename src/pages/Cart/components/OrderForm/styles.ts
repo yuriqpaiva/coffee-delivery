@@ -20,7 +20,7 @@ export const Title = styled.h2`
 `
 
 export const AddressInformationContainer = styled.div`
-  max-height: 372px;
+  min-height: 372px;
   background-color: ${({ theme }) => theme.colors['base-card']};
   width: 100%;
 

@@ -65,7 +65,7 @@ export function SelectedCoffees() {
             </PurchaseTotalText>
           </PurchaseSummaryTextWrapper>
         </PurchaseSummary>
-        <ConfirmButton>Confirmar pedido</ConfirmButton>
+        <ConfirmButton type="submit">Confirmar pedido</ConfirmButton>
       </ContentWrapper>
     </SelectedCoffeesContainer>
   )
