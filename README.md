@@ -59,9 +59,7 @@ Follow these steps to get started with the Timer Application:
 
 3. Start the development server using the command `npm run dev`.
 
-4. In your browser, navigate to `http://localhost:3000` to access the application.
-
-5. Use the application by creating new timers, interrupting timers, and viewing timer history.
+4. In your browser, navigate to `http://localhost:5174` to access the application.
 
 
 <br>
